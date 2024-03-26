@@ -25,11 +25,10 @@ const userSignup = async (req: Request, res: Response) => {
 
 const userLogin = async (req: Request, res: Response) => {
     try {
-        // const { email, password } = req.body;
-        const email = 'motin@gmail.com';
-        const password  = '12345';
+        const { email, password } = req.body;
+        console.log(req.body);
+        
         const result = await AuthService.userLoginService(email, password);
-
         res.status(200).json({
             success: true,
             message: 'User found!',
