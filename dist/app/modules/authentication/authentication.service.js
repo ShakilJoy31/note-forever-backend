@@ -19,7 +19,7 @@ const userSignupService = (payload) => __awaiter(void 0, void 0, void 0, functio
 const userLoginService = (email, password) => __awaiter(void 0, void 0, void 0, function* () {
     const isUserExist = yield authentication_model_1.AuthenticationModel.findOne({ email: email });
     if (!isUserExist) {
-        throw new Error('User does not exist');
+        throw new Error('User is not here.');
     }
     else {
         console.log('UserExist', isUserExist);

@@ -33,9 +33,8 @@ const userSignup = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // const { email, password } = req.body;
-        const email = 'motin@gmail.com';
-        const password = '12345';
+        const { email, password } = req.body;
+        console.log(req.body);
         const result = yield authentication_service_1.AuthService.userLoginService(email, password);
         res.status(200).json({
             success: true,
