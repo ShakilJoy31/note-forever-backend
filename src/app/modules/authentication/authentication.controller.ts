@@ -4,12 +4,7 @@ import { AuthService } from './authentication.service';
 // User signup
 const userSignup = async (req: Request, res: Response) => {
     try {
-        // const { ...signupData } = req.body;
-        const signupData = {
-            name: 'Abdul Motin',
-            email: 'motin.6@gmail.com',
-            password: '12345'
-        }
+        const { ...signupData } = req.body;
         const result = await AuthService.userSignupService(signupData);
 
         res.status(200).json({
