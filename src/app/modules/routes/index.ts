@@ -1,5 +1,6 @@
 import express from 'express';
 import { AuthRoutes } from '../authentication';
+import { NotesRoute } from '../notes';
 
 
 
@@ -8,6 +9,10 @@ const moduleRoutes = [
   {
     path: '/auth',
     route: AuthRoutes,
+  },
+  {
+    path: '/notes',
+    route: NotesRoute,
   },
 ];
 
