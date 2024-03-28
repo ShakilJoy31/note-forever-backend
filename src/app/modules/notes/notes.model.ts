@@ -10,7 +10,6 @@ export const noteSchema = new Schema<INotes>(
     title: {
       type: String,
       required: true,
-      unique: false
     },
     description: {
       type: String,

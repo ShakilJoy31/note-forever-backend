@@ -10,11 +10,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NotesService = void 0;
-const notes_model_1 = require("./notes.model");
+const authentication_model_1 = require("../authentication/authentication.model");
 // login signup
 const createNoteToDb = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield notes_model_1.NotesModel.create(payload);
-    return result;
+    // Find the document based on the provided email
+    const existingDocument = yield authentication_model_1.AuthenticationModel.findOne({ email: payload.email });
+    if (!existingDocument) {
+        const newDocument = yield authentication_model_1.AuthenticationModel.create({ email: payload.email, notes: [payload] });
+        return newDocument;
+    }
+    existingDocument.notes.push(payload);
+    yield existingDocument.save();
+    return existingDocument;
 });
 exports.NotesService = {
     createNoteToDb

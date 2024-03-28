@@ -1,7 +1,16 @@
+interface Note {
+  title: string;
+  description: string;
+}
+
+
+
+
 export type ISignup = {
   name: string;
     email: string;
     password: string;
+    notes: Array<Note>;
   };
   
 //   export type ILoginUserResponse = {
