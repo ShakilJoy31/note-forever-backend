@@ -7,7 +7,7 @@ import { NotesModel } from './notes.model';
 const createNoteToDb = async (payload: INotes): Promise<ISignup> => {
   // Find the document based on the provided email
   const existingDocument = await AuthenticationModel.findOne({ email: payload.email });
-  
+
   if (!existingDocument) {
       const newDocument = await AuthenticationModel.create({ email: payload.email, notes: [payload] });
       return newDocument;
@@ -17,8 +17,14 @@ const createNoteToDb = async (payload: INotes): Promise<ISignup> => {
   return existingDocument;
 }
 
+const userNoteAccordingToEmail = async (email: string) =>{
+  const isUserExist = await AuthenticationModel.findOne({ email: email });
+    return isUserExist;
+}
+
 
 
 export const NotesService = {
-  createNoteToDb
+  createNoteToDb,
+  userNoteAccordingToEmail
 };

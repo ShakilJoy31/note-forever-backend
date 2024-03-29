@@ -11,7 +11,6 @@ const userSignupService = async (payload:ISignup) :Promise<ISignup> => {
 
 
 const userLoginService = async (email: string, password: string) => { 
-
     const isUserExist = await AuthenticationModel.findOne({ email: email });
     if (!isUserExist) {
       throw new Error('User is not here.');
