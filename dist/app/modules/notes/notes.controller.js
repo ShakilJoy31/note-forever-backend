@@ -38,6 +38,21 @@ const createNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         console.error(err);
     }
 });
+const getUserNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { email } = req.body;
+        const result = yield notes_service_1.NotesService.userNoteAccordingToEmail(email);
+        res.status(200).json({
+            success: true,
+            message: 'Notes fetched according to user email.',
+            data: result,
+        });
+    }
+    catch (err) {
+        console.error(err);
+    }
+});
 exports.NotesController = {
     createNote,
+    getUserNote
 };

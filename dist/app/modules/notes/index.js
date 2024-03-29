@@ -9,4 +9,5 @@ const notes_controller_1 = require("./notes.controller");
 const router = express_1.default.Router();
 // router.get('/login', AuthController.verification);
 router.post('/create-note', notes_controller_1.NotesController.createNote);
+router.post('/get-user-note', notes_controller_1.NotesController.getUserNote);
 exports.NotesRoute = router;

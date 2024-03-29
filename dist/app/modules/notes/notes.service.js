@@ -23,6 +23,11 @@ const createNoteToDb = (payload) => __awaiter(void 0, void 0, void 0, function* 
     yield existingDocument.save();
     return existingDocument;
 });
+const userNoteAccordingToEmail = (email) => __awaiter(void 0, void 0, void 0, function* () {
+    const isUserExist = yield authentication_model_1.AuthenticationModel.findOne({ email: email });
+    return isUserExist;
+});
 exports.NotesService = {
-    createNoteToDb
+    createNoteToDb,
+    userNoteAccordingToEmail
 };
